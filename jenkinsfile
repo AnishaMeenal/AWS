@@ -1,0 +1,25 @@
+pipeline {   
+ agent any   
+ stages   {       
+ stage('Checkout') {  
+ steps {             
+ checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/AnishaMeenal/AWS.git']]])            
+ }       
+ }              
+ stage('Deploy') {       
+ steps {               
+ // Use your own deployment steps here, like copying files to your EC2 instance      
+ // You might need to use tools like SCP, Ansible, or SSH to copy the files      
+ // Example: Using SCP to copy files to EC2 instance          
+ sh "scp app.py 3.101.79.237:/home/ubuntu/app.py"            
+ sh "scp index.html 3.101.79.237:/home/ubuntu/templates/index.html"      
+ }       
+ }         
+ stage('Run Python Script') {       
+ steps {           
+ // Use SSH to run the Python script on your EC2 instance     
+ sh "ssh 3.101.79.237 'python /home/ubuntu/app.py'"         
+     } 
+     }  
+   }
+ }
