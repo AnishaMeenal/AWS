@@ -1,9 +1,8 @@
 name: Display CPU and Memory Usage
-on:  
- push:
-    main
- pull:
-    main
+on:
+  push:
+    branches:
+       - main
   
 jobs: 
  display_metrics: 
