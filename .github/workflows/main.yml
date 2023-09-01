@@ -6,7 +6,7 @@ on:
   
 jobs: 
  display_metrics: 
-  runs-on: self-hosted
+  runs-on: ubuntu-new
 
   steps:
   - name: checkout code
