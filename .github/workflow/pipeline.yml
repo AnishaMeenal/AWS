@@ -1,7 +1,9 @@
 name: Display CPU and Memory Usage
 on:  
- schedule:  
-   - cron: "*/5 * * * *"  
+ push:
+    main
+ pull:
+    main
   
 jobs: 
  display_metrics: 
