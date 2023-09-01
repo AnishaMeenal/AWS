@@ -12,7 +12,7 @@ jobs:
   - name: checkout code
     uses: actions/checkout@v2
 
-  - name: Install Python
+  - name: Install Python3
     run: |
       sudo apt update
       sudo apt install -y python3
@@ -25,7 +25,7 @@ jobs:
 
   - name: Install required python packages
     run: |
-       python 3 -m pip install psutil
+       python3 -m pip install psutil
     shell: bash
     
   - name: Run app.py in the background
