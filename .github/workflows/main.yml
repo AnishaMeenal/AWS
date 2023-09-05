@@ -36,6 +36,6 @@ jobs:
 
   - name: Start a simple HTTP server for index.html
     run: |
-      python3 -m http.server 5321
+      python3 -m http.server 5231
     shell: bash
     #background: true
