@@ -23,10 +23,6 @@ jobs:
   - name: Install required python packages
     run: |
        python3 -m pip install psutil
-  
-  - name: Run app.py in the background
-    run: |
-      nohup python3 app.py &
 
   - name: Start a simple HTTP server for index.html
     run: |
