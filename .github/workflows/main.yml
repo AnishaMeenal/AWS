@@ -19,16 +19,16 @@ jobs:
   - name: Install required Python packages
     run: |
        python3 -m pip install Flask  
-
-  - name: Install required python packages
-    run: |
        python3 -m pip install psutil
-  
-  - name: Run app.py in the background
-    run: |
-      nohup python3 app.py &
 
-  - name: Start a simple HTTP server for index.html
+  - name: Set Template Directory  
+    run: echo "TEMPLATE_DIR=templates" >> $GITHUB_ENV
+
+  - name: Start HTTP server for index.html      
+    run: python3 -m http.server -d ${{ env.TEMPLATE_DIR }}
+    
+  - name: Run app.py 
     run: |
-      python3 -m http.server 5321
-    shell: bash
+       python src/app.py
+
+ 
