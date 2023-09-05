@@ -1,36 +1,45 @@
 name: Display CPU and Memory Usage
-on:
-  push:
-    branches:
-       - main
-  
-jobs: 
- display_metrics: 
-  runs-on: self-hosted
-
-  steps:
-  - name: checkout code
-    uses: actions/checkout@v2
-
-  - name: Install Python3
-    run: |
-       sudo apt install -y python3
+on:  
+ push:  
+  branches:  
+   - main
+jobs: 
+ display_metrics:    
+  runs-on: self-hosted    
+  steps:      
+   - name: Checkout code      
+     uses: actions/checkout@v2   
+     
+   - name: Install Python3      
+    run: |          
+     sudo apt update     
+     sudo apt install -y python3      
+    shell: bash      
     
-  - name: Install required Python packages
-    run: |
-       python3 -m pip install Flask  
-
-  - name: Install required python packages
-    run: |
-       python3 -m pip install psutil
-  
+   - name: Install required Python packages   
+    run: |        
+     python3 -m pip install Flask      
+    shell: bash  
     
-  - name: Run app.py in the background
-    run: |
-      nohup python3 app.py &
-
-  - name: Start a simple HTTP server for index.html
-    run: |
-      python3 -m http.server 5321
-    shell: bash
+   - name: Install required Python packages      
+    run: |          
+     python3 -m pip install psutil   
+    shell: bash     
+  
+   - name: Run app.py in the background     
+    run: |        
+     nohup python3 app.py &      
+    shell: bash       
+    background: true  # Keep this line if you want the app to run in the background.   
+  
+   - name: Display CPU Usage 
+    run: |          
+     python3 -c "import psutil; print(psutil.cpu_percent())"    
+    shell: bash     
+   
+   - name: Start a simple HTTP server for index.html     
+    run: |        
+     python3 -m http.server 5321     
+    shell: bash        
+    background: true  # Keep this line if you want the server to run in the background.
   
