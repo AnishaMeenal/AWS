@@ -24,7 +24,6 @@ jobs:
     run: |
        python3 -m pip install psutil
   
-    
   - name: Run app.py in the background
     run: |
       nohup python3 app.py &
