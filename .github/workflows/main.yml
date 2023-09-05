@@ -13,32 +13,20 @@ jobs: 
    - name: Install Python3      
     run: |          
      sudo apt update     
-     sudo apt install -y python3      
-    shell: bash      
+     sudo apt install -y python3          
     
    - name: Install required Python packages   
     run: |        
      python3 -m pip install Flask      
-    shell: bash  
     
    - name: Install required Python packages      
     run: |          
-     python3 -m pip install psutil   
-    shell: bash     
-  
-   - name: Run app.py in the background     
-    run: |        
-     nohup python3 app.py &      
-    shell: bash       
-    background: true  # Keep this line if you want the app to run in the background.   
+     python3 -m pip install psutil       
   
    - name: Display CPU Usage 
     run: |          
      python3 -c "import psutil; print(psutil.cpu_percent())"    
-    shell: bash     
-   
+  
    - name: Start a simple HTTP server for index.html     
     run: |        
      python3 -m http.server 5321     
-    shell: bash        
-    background: true  # Keep this line if you want the server to run in the background.
