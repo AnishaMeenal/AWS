@@ -27,7 +27,7 @@ jobs:
   - name: Start HTTP server for index.html      
     run: python3 -m http.server -d ${{ env.TEMPLATE_DIR }}
     
-  - name: Run app.py 
+  - name: Run app.py
     run: |
        python src/app.py
 
